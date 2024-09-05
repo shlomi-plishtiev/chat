@@ -33,5 +33,21 @@
       "topic": "politics"
     }
   ],
-  "messages": []
+  "messages": [
+    {
+      "from": "shlomi plishtiev",
+      "topic": "politics",
+      "files": [
+        {
+          "data": "blob:http://localhost:3030/d2fa2674-c104-48a7-97c7-d359413b7a76",
+          "type": "audio/wav"
+        }
+      ]
+    },
+    {
+      "txt": "גדג",
+      "from": "shlomi plishtiev",
+      "topic": "politics"
+    }
+  ]
 }
