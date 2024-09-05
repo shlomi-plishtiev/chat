@@ -95,7 +95,7 @@ input#input {
     border: 1px solid #ccc;
     border-radius: 20px;
     padding: 10px;
-    margin-right: 10px;
+    /* margin-right: 10px; */
     font-size: 16px;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -111,7 +111,7 @@ label#file-label {
     padding: 8px;
     cursor: pointer;
     font-size: 20px;
-    margin-right: 10px;
+    /* margin-right: 10px; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -131,7 +131,7 @@ button#emoji-button {
     padding: 8px;
     cursor: pointer;
     font-size: 20px;
-    margin-right: 10px;
+    /* margin-right: 10px; */
     transition: background-color 0.3s;
 }
 
@@ -148,7 +148,7 @@ button#record-btn {
     padding: 8px;
     cursor: pointer;
     font-size: 20px;
-    margin-right: 10px;
+    /* margin-right: 10px; */
     transition: background-color 0.3s;
 }
 
@@ -274,4 +274,47 @@ button[type="submit"]:hover {
 
 .hidden {
     display: none;
+}
+
+/* מדיה קווירי למכשירים ניידים */
+@media (max-width: 600px) {
+    /* כותרת */
+    header {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    /* טופס שליחה */
+    form#form {
+        flex-direction: row; /* שמירה על פריסה אופקית */
+        padding: 8px; /* התאמת רפידות */
+    }
+
+    /* שדה קלט */
+    input#input {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    /* כפתור שליחה */
+    button[type="submit"] {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    /* בועות הודעה */
+    ul#messages li {
+        max-width: 90%;
+    }
+
+    /* בורר אימוג'י */
+    #emoji-picker {
+        bottom: 60px;
+    }
+
+    /* תמונה מוקטנת */
+    .preview-img {
+        max-width: 100%;
+        max-height: 80%;
+    }
 }
