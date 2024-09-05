@@ -1,0 +1,53 @@
+{
+  "שלומי": [
+    {
+      "txt": "גדכגכ",
+      "from": "שלומי",
+      "topic": "politics"
+    },
+    {
+      "txt": "דג",
+      "from": "שלומי",
+      "topic": "politics"
+    },
+    {
+      "txt": "כעכ",
+      "from": "שלומי",
+      "topic": "politics"
+    },
+    {
+      "txt": "גכ",
+      "from": "שלומי",
+      "topic": "politics"
+    }
+  ],
+  "דוד": [
+    {
+      "txt": "יח",
+      "from": "דוד",
+      "topic": "politics"
+    },
+    {
+      "txt": "דגד",
+      "from": "דוד",
+      "topic": "politics"
+    }
+  ],
+  "messages": [
+    {
+      "from": "shlomi plishtiev",
+      "topic": "politics",
+      "files": [
+        {
+          "data": "blob:http://localhost:3030/d2fa2674-c104-48a7-97c7-d359413b7a76",
+          "type": "audio/wav"
+        }
+      ]
+    },
+    {
+      "txt": "גדג",
+      "from": "shlomi plishtiev",
+      "topic": "politics"
+    }
+  ]
+}
