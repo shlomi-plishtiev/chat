@@ -1,0 +1,37 @@
+{
+  "שלומי": [
+    {
+      "txt": "גדכגכ",
+      "from": "שלומי",
+      "topic": "politics"
+    },
+    {
+      "txt": "דג",
+      "from": "שלומי",
+      "topic": "politics"
+    },
+    {
+      "txt": "כעכ",
+      "from": "שלומי",
+      "topic": "politics"
+    },
+    {
+      "txt": "גכ",
+      "from": "שלומי",
+      "topic": "politics"
+    }
+  ],
+  "דוד": [
+    {
+      "txt": "יח",
+      "from": "דוד",
+      "topic": "politics"
+    },
+    {
+      "txt": "דגד",
+      "from": "דוד",
+      "topic": "politics"
+    }
+  ],
+  "messages": []
+}

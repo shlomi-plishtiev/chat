@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>צ'אט</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <b id="name"></b>
+    </header>
+    <div class="chat-container">
+        <ul id="messages"></ul>
+        <div id="image-preview" class="preview-container"></div>
+
+        <form id="form" onsubmit="onSendMsg(event)">
+            <input id="input" autocomplete="off" placeholder="Write a message..." aria-label="הודעה" />
+            <input type="file" id="file-input" accept="image/*,video/*" onchange="previewImage(event)">
+            <label for="file-input" id="file-label">📎</label>
+            <button type="button" id="emoji-button">😊</button>
+            <button type="button" id="record-btn" onclick="toggleRecording()">🎙️</button>
+            <button type="submit">send</button>
+        </form>
+        <!-- Emoji picker -->
+        <div id="emoji-picker" class="hidden">
+            <span class="emoji" onclick="addEmoji('😊')">😊</span>
+            <span class="emoji" onclick="addEmoji('😂')">😂</span>
+            <span class="emoji" onclick="addEmoji('😍')">😍</span>
+            <span class="emoji" onclick="addEmoji('😢')">😢</span>
+            <span class="emoji" onclick="addEmoji('💖')">💖</span>
+            <!-- Add more emojis as needed -->
+        </div>
+        <audio id="audio-player" controls></audio>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="chat.js"></script>
+</body>
+
+</html>
