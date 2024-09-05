@@ -347,6 +347,8 @@ button[type="submit"]:hover {
     border: 1px solid #ccc;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     flex-direction: column;
+    z-index: 5;
+
 }
 
 
@@ -354,7 +356,7 @@ button[type="submit"]:hover {
 #delete-chat-btn {
     padding: 10px;
     border: none;
-    background-color: rgb(126, 126, 126);
+    background-color: rgb(158, 0, 0);
     color: white;
     cursor: pointer;
 }
