@@ -1,4 +1,3 @@
-/* כלליות */
 html,
 body {
     height: 100%;
@@ -6,16 +5,30 @@ body {
 }
 
 body {
+    position: relative;
     font-family: 'Arial', sans-serif;
-    background-image: url('https://i.pinimg.com/736x/8c/98/99/8c98994518b575bfd8c949e91d20548b.jpg');
-    background-size: contain;
-    background-position: center center;
-    background-attachment: fixed;
+    background: #fff; 
     display: flex;
     flex-direction: column;
 }
 
-/* כותרת */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(160, 160, 160, 0.5), rgba(255, 255, 255, 0.5)), 
+                      url('https://i.pinimg.com/736x/8c/98/99/8c98994518b575bfd8c949e91d20548b.jpg');
+    background-size: contain; 
+    background-position: center center; 
+    background-attachment: fixed; 
+    opacity: 0.7; 
+    z-index: -1;
+}
+
+
 header {
     background-color: #128C7E;
     color: #fff;
@@ -26,7 +39,6 @@ header {
     border-bottom: 1px solid #ccc;
 }
 
-/* מיכל הצ'אט */
 .chat-container {
     flex: 1;
     display: flex;
@@ -34,7 +46,6 @@ header {
     overflow: hidden;
 }
 
-/* רשימת הודעות */
 ul#messages {
     list-style: none;
     padding: 10px;
@@ -45,7 +56,6 @@ ul#messages {
     flex-direction: column;
 }
 
-/* בועות הודעה */
 ul#messages li {
     margin-bottom: 10px;
     padding: 10px;
@@ -55,7 +65,6 @@ ul#messages li {
     display: inline-block;
 }
 
-/* הודעות שנשלחו */
 ul#messages .sent {
     background-color: #dcf8c6;
     align-self: flex-end;
@@ -63,15 +72,13 @@ ul#messages .sent {
     border-radius: 15px 15px 0 15px;
 }
 
-/* הודעות שהתקבלו */
 ul#messages .received {
-    background-color: #fff;
+    background-color: #ffffff;
     align-self: flex-start;
     text-align: left;
     border-radius: 15px 15px 15px 0;
 }
 
-/* תמונות וסרטונים */
 .chat-media {
     max-width: 100%;
     border-radius: 8px;
@@ -80,7 +87,6 @@ ul#messages .received {
     margin-top: 5px;
 }
 
-/* טופס שליחה */
 form#form {
     display: flex;
     align-items: center;
@@ -93,18 +99,15 @@ form#form {
     z-index: 1;
 }
 
-/* שדה קלט */
 input#input {
     flex: 1;
     border: 1px solid #ccc;
     border-radius: 20px;
     padding: 10px;
-    /* margin-right: 10px; */
     font-size: 16px;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-/* כפתור קובץ */
 input[type="file"] {
     display: none;
 }
@@ -115,7 +118,6 @@ label#file-label {
     padding: 8px;
     cursor: pointer;
     font-size: 20px;
-    /* margin-right: 10px; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -126,7 +128,6 @@ label#file-label:hover {
     background-color: #0a6f61;
 }
 
-/* כפתור אימוג'י */
 button#emoji-button {
     background-color: #ffffff;
     color: #128C7E;
@@ -135,7 +136,6 @@ button#emoji-button {
     padding: 8px;
     cursor: pointer;
     font-size: 20px;
-    /* margin-right: 10px; */
     transition: background-color 0.3s;
 }
 
@@ -143,7 +143,6 @@ button#emoji-button:hover {
     background-color: #f0f0f0;
 }
 
-/* כפתור הקלטה */
 button#record-btn {
     background-color: #ffffff;
     color: #128C7E;
@@ -152,7 +151,6 @@ button#record-btn {
     padding: 8px;
     cursor: pointer;
     font-size: 20px;
-    /* margin-right: 10px; */
     transition: background-color 0.3s;
 }
 
@@ -160,7 +158,6 @@ button#record-btn:hover {
     background-color: #f0f0f0;
 }
 
-/* כפתור שליחה */
 button[type="submit"] {
     background-color: #128C7E;
     color: #fff;
@@ -176,7 +173,6 @@ button[type="submit"]:hover {
     background-color: #0a6f61;
 }
 
-/* התראה */
 #notification {
     position: fixed;
     bottom: 20px;
@@ -219,12 +215,10 @@ button[type="submit"]:hover {
     }
 }
 
-/* נגן אודיו */
 #audio-player {
     display: none;
 }
 
-/* בורר אימוג'י */
 #emoji-picker {
     position: absolute;
     bottom: 70px;
@@ -246,7 +240,6 @@ button[type="submit"]:hover {
     border-radius: 5px;
 }
 
-/* תמונה מוקטנת */
 #image-preview {
     margin-bottom: 10px;
 }
@@ -265,7 +258,6 @@ button[type="submit"]:hover {
     margin-bottom: 10px;
 }
 
-/* תמונה מסך מלא */
 .fullscreen-img {
     position: fixed;
     top: 0;
@@ -282,46 +274,36 @@ button[type="submit"]:hover {
     display: none;
 }
 
-/* מדיה קווירי למכשירים ניידים */
 @media (max-width: 600px) {
 
-    /* כותרת */
     header {
         font-size: 16px;
         padding: 8px;
     }
 
-    /* טופס שליחה */
     form#form {
         flex-direction: row;
-        /* שמירה על פריסה אופקית */
         padding: 8px;
-        /* התאמת רפידות */
     }
 
-    /* שדה קלט */
     input#input {
         font-size: 14px;
         padding: 8px;
     }
 
-    /* כפתור שליחה */
     button[type="submit"] {
         font-size: 14px;
         padding: 8px 16px;
     }
 
-    /* בועות הודעה */
     ul#messages li {
         max-width: 90%;
     }
 
-    /* בורר אימוג'י */
     #emoji-picker {
         bottom: 60px;
     }
 
-    /* תמונה מוקטנת */
     .preview-img {
         max-width: 100%;
         max-height: 80%;
