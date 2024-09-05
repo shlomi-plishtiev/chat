@@ -11,11 +11,8 @@ const server = createServer(app);
 const io = new Server(server);
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-
-// נתיב לקובץ שבו נשמרות ההודעות
 const messagesFilePath = path.join(__dirname, 'messages.json');
 
-// טוען את ההודעות מקובץ JSON
 function loadMessages() {
     try {
         if (fs.existsSync(messagesFilePath)) {
@@ -28,7 +25,6 @@ function loadMessages() {
     return { messages: [] };
 }
 
-// שומר את ההודעות לקובץ JSON
 function saveMessages(messages) {
     try {
         fs.writeFileSync(messagesFilePath, JSON.stringify(messages, null, 2));
@@ -37,7 +33,14 @@ function saveMessages(messages) {
     }
 }
 
-// אתחול ההודעות מהקובץ
+function deleteAllMessages() {
+    try {
+        fs.writeFileSync(messagesFilePath, JSON.stringify({ messages: [] }, null, 2));
+    } catch (error) {
+        console.error('Error deleting messages:', error);
+    }
+}
+
 const chatMessages = loadMessages();
 
 app.use(express.static(join(__dirname, 'public')));
@@ -51,7 +54,6 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
     console.log('A user connected');
 
-    // שליחת כל ההודעות למשתמש החדש
     socket.emit('add-msgs', chatMessages.messages);
 
     socket.on('set-user-socket', (nickname) => {
@@ -61,13 +63,12 @@ io.on('connection', (socket) => {
     });
 
     socket.on('send-msg', (msg) => {
-        // ודא ש-chatMessages.messages מוגדר
         if (!chatMessages.messages) {
             chatMessages.messages = [];
         }
 
         chatMessages.messages.push(msg);
-        saveMessages(chatMessages); // שמירת ההודעות בקובץ
+        saveMessages(chatMessages);
 
         if (msg.to) {
             const recipientSocketId = connectedUsers.find(user => user.nickname === msg.to)?.id;
@@ -79,6 +80,12 @@ io.on('connection', (socket) => {
         } else {
             io.emit('add-msg', msg);
         }
+    });
+
+    socket.on('delete-all-msgs', () => {
+        chatMessages.messages = [];
+        deleteAllMessages();
+        io.emit('add-msgs', chatMessages.messages);
     });
 
     socket.on('disconnect', () => {

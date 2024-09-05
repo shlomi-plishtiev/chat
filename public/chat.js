@@ -9,25 +9,26 @@ socket.emit('set-user-socket', nickname);
 
 document.getElementById('name').innerText = nickname;
 
-let isAtBottom = true; // Track if user is at the bottom
+let isAtBottom = true;
 
 socket.on('add-msgs', msgs => {
     if (Array.isArray(msgs)) {
         document.querySelector('#messages').innerHTML = '';
         msgs.forEach(addMsg);
         if (isAtBottom) {
-            scrollToBottom(); // Scroll to bottom if already at the bottom
+            scrollToBottom();
         }
     } else {
+        console.error('Received invalid data from server');
     }
 });
 
 socket.on('add-msg', msg => {
     addMsg(msg);
     if (msg.from === nickname) {
-        scrollToBottom(); // Scroll to bottom if message is from the current user
+        scrollToBottom();
     } else if (!isAtBottom && document.visibilityState === 'hidden') {
-        showNotification(msg); // Show notification if user is not at the bottom and tab is not visible
+        showNotification(msg);
     }
 });
 
@@ -70,7 +71,7 @@ function showNotification(msg) {
     if (Notification.permission === 'granted') {
         new Notification('New Message', {
             body: `${msg.from}: ${msg.txt || 'Sent a file'}`,
-            icon: '/path/to/icon.png' // optional
+            icon: '/path/to/icon.png'
         });
     } else if (Notification.permission !== 'denied') {
         Notification.requestPermission().then(permission => {
@@ -85,7 +86,6 @@ if (Notification.permission === 'default') {
     Notification.requestPermission();
 }
 
-// Track scroll events to update `isAtBottom`
 document.querySelector('#messages').addEventListener('scroll', () => {
     const elUl = document.querySelector('#messages');
     isAtBottom = elUl.scrollHeight - elUl.clientHeight <= elUl.scrollTop + 1;
@@ -112,9 +112,9 @@ async function onSendMsg(ev) {
         socket.emit('send-msg', msg);
     }
 
-    elInput.value = '';  // Clear the input field after sending
-    elFileInput.value = '';  // Clear the file input
-    document.getElementById('image-preview').innerHTML = '';  // Clear the image preview
+    elInput.value = '';
+    elFileInput.value = '';
+    document.getElementById('image-preview').innerHTML = '';
 }
 
 function readFile(file) {
@@ -134,15 +134,10 @@ function readFile(file) {
 }
 
 function openFullscreen(el) {
-    // Create a new image element with fullscreen style
     const fullscreenImg = document.createElement('img');
     fullscreenImg.src = el.src;
     fullscreenImg.className = 'fullscreen-img';
-
-    // Add the image to the document body
     document.body.appendChild(fullscreenImg);
-
-    // Add a click event to close the image
     fullscreenImg.addEventListener('click', () => {
         document.body.removeChild(fullscreenImg);
     });
@@ -151,7 +146,7 @@ function openFullscreen(el) {
 function addEmoji(emoji) {
     const input = document.getElementById('input');
     input.value += emoji;
-    emojiPicker.style.display = 'none'; // Hide the picker after selection
+    emojiPicker.style.display = 'none';
 }
 
 function previewImage(event) {
@@ -165,11 +160,10 @@ function previewImage(event) {
         };
         reader.readAsDataURL(file);
     } else {
-        previewContainer.innerHTML = ''; // Clear the preview if file is not an image
+        previewContainer.innerHTML = '';
     }
 }
 
-// Recording audio messages
 let mediaRecorder;
 let audioChunks = [];
 
@@ -210,3 +204,23 @@ emojiButton.addEventListener('click', () => {
 });
 
 document.querySelector('#file-input').addEventListener('change', previewImage);
+const menuBtn = document.getElementById('menu-btn');
+const menu = document.getElementById('menu');
+const deleteChatBtn = document.getElementById('delete-chat-btn');
+
+menuBtn.addEventListener('click', () => {
+    if (menu.classList.contains('menu-hidden')) {
+        menu.classList.remove('menu-hidden');
+        menu.classList.add('menu-visible');
+    } else {
+        menu.classList.remove('menu-visible');
+        menu.classList.add('menu-hidden');
+    }
+});
+
+deleteChatBtn.addEventListener('click', () => {
+    document.getElementById('messages').innerHTML = '';
+    menu.classList.remove('menu-visible');
+    menu.classList.add('menu-hidden');
+    socket.emit('delete-all-msgs');
+});

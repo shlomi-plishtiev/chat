@@ -7,7 +7,7 @@ body {
 body {
     position: relative;
     font-family: 'Arial', sans-serif;
-    background: #fff; 
+    background: #fff;
     display: flex;
     flex-direction: column;
 }
@@ -19,19 +19,19 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(rgba(160, 160, 160, 0.5), rgba(255, 255, 255, 0.5)), 
-                      url('https://i.pinimg.com/736x/8c/98/99/8c98994518b575bfd8c949e91d20548b.jpg');
-    background-size: contain; 
-    background-position: center center; 
-    background-attachment: fixed; 
-    opacity: 0.7; 
+    background-image: linear-gradient(rgba(160, 160, 160, 0.5), rgba(255, 255, 255, 0.5)),
+        url('https://i.pinimg.com/736x/8c/98/99/8c98994518b575bfd8c949e91d20548b.jpg');
+    background-size: contain;
+    background-position: center center;
+    background-attachment: fixed;
+    opacity: 0.7;
     z-index: -1;
 }
 
 
 header {
-    background-color: #128C7E;
-    color: #fff;
+    background-color: #ffffff;
+    color: #000000;
     padding: 10px;
     text-align: center;
     font-size: 18px;
@@ -265,7 +265,7 @@ button[type="submit"]:hover {
     width: 100vw;
     height: 100vh;
     object-fit: contain;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(247, 247, 247, 0.8);
     z-index: 9999;
     cursor: pointer;
 }
@@ -278,7 +278,8 @@ button[type="submit"]:hover {
 
     header {
         font-size: 16px;
-        padding: 8px;
+        padding: 10px;
+
     }
 
     form#form {
@@ -308,4 +309,52 @@ button[type="submit"]:hover {
         max-width: 100%;
         max-height: 80%;
     }
+    button#menu-btn {
+        top: 3px;
+    }
+}
+
+.menu-hidden {
+    display: none;
+}
+
+.menu-visible {
+    display: block;
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#menu-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    left: 10px;
+    top: 6px;
+}
+
+#menu {
+    position: absolute;
+    top: 40px;
+    right: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    flex-direction: column;
+}
+
+
+
+#delete-chat-btn {
+    padding: 10px;
+    border: none;
+    background-color: rgb(126, 126, 126);
+    color: white;
+    cursor: pointer;
 }
