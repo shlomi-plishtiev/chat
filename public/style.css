@@ -1,12 +1,16 @@
 /* כלליות */
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
 }
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #e5ddd5;
+    background-image: url('https://i.pinimg.com/736x/8c/98/99/8c98994518b575bfd8c949e91d20548b.jpg');
+    background-size: contain;
+    background-position: center center;
+    background-attachment: fixed;
     display: flex;
     flex-direction: column;
 }
@@ -198,6 +202,7 @@ button[type="submit"]:hover {
         transform: translateX(-50%) translateY(50px);
         opacity: 0;
     }
+
     to {
         transform: translateX(-50%) translateY(0);
         opacity: 1;
@@ -208,6 +213,7 @@ button[type="submit"]:hover {
     from {
         opacity: 1;
     }
+
     to {
         opacity: 0;
     }
@@ -278,6 +284,7 @@ button[type="submit"]:hover {
 
 /* מדיה קווירי למכשירים ניידים */
 @media (max-width: 600px) {
+
     /* כותרת */
     header {
         font-size: 16px;
@@ -286,8 +293,10 @@ button[type="submit"]:hover {
 
     /* טופס שליחה */
     form#form {
-        flex-direction: row; /* שמירה על פריסה אופקית */
-        padding: 8px; /* התאמת רפידות */
+        flex-direction: row;
+        /* שמירה על פריסה אופקית */
+        padding: 8px;
+        /* התאמת רפידות */
     }
 
     /* שדה קלט */
